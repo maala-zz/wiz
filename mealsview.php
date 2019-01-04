@@ -2,6 +2,11 @@
 <?php
 require 'connect.php';
 session_start();
+/**
+ * query on the meals, as we said all the restaurant have all meals,
+ * to improve this, we have just to add another script 
+ * so each resturant can add it's meals
+ */
 $sqlSelectMeals = "SELECT * FROM `meal`";
 $meals = mysqli_query($con, $sqlSelectMeals);
 ?>
@@ -69,32 +74,39 @@ $meals = mysqli_query($con, $sqlSelectMeals);
         <h2 class="text-center text-uppercase text-secondary mb-0" style="padding-top:15px;">Meals</h2>
         <hr class="star-dark mb-5">
 
-    <!-- Contact Section -->
+    <!-- Meals-View Section -->
 
     <section id="contact">
             <ul class="cards">
     <?php
+    /**
+     * fetch meals which contains the restaurant's meals and but the data in the card
+     * in my code, I consider that all restaurants have all the meals
+     */
           while ($row = mysqli_fetch_assoc($meals)) {
               $id = $row["id"];
               $name = $row["name"];
               $image = $row["image"];
               $instruction = $row["instruction"];
+              // card section
               echo "<li class='cards__item'>";
               echo "<div class='card'>";
               echo "<img class='card__image card__image--fence' src='$image' >";
               echo "<div class='card__content'>";
               echo "<div class='card__title'>$name</div>";
               echo "<p class='card__text'>" . $instruction . "</p>";
+              // delete button make get request to deletemeal.php
               echo "<a href='deletemeal.php?id=$id' class='btn btn-primary' style='margin-bottom: 10px;' >Delete</a>";
+              // update button make get request to updatemeal.php 
               echo "<a href='updatemeal.php?id=$id' class='btn btn-primary'>Update</a>";
               echo "</div>";
               echo "</div>";
               echo "</li>";
           }
-?>
-
-    </ul>
-
+          // close php code 
+    ?>
+              </ul>
+    <!-- Meals-view Section End -->
     </section>
 
     <!-- Footer -->

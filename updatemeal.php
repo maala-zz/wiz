@@ -1,16 +1,26 @@
 <!DOCTYPE html>
 <?php
 require('connect.php') ;
+// get the id from the request
 $mealId = $_GET['id'] ;
+// query to get the current meal data
 $sqlSelectMeal = "SELECT * from `meal` where id=".$mealId ;
 $res = mysqli_query($con,$sqlSelectMeal) ;
+// save the data in $meal
 $meal = mysqli_fetch_assoc($res) ;
 //-------------------------------
+/**
+ * it's behaviour as a listener, 
+ * when submitting the updating form it will excecute this block
+ */
 if( isset($_POST['UpdateMeal']) ){
+	// git the new data from the form, and simply update the meal information 
     $name = $_POST['name'] ;
     $category = $_POST['category'] ;
     $instruction = $_POST['instruction'] ;
-    $sqlUpdateMeal = "UPDATE `meal` SET `name`='$name' , `instruction`='$instruction', `category`='$category' where `id`='$mealId'" ;
+    $sqlUpdateMeal = "UPDATE `meal` SET `name`='$name' , 
+	 				 `instruction`='$instruction', `category`='$category'
+					  where `id`='$mealId'" ;
     $res = mysqli_query($con,$sqlUpdateMeal) ;
     if( !$res ){
         echo "Something went wrong" ;

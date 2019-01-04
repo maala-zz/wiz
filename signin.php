@@ -45,7 +45,7 @@ session_start() ;
               <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#Reserve">Home</a>
             </li>
             <li class="nav-item mx-0 mx-lg-1">
-              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="signup.php"><?php if (isset($_SESSION["userName"])) {echo $_SESSION["userName"];} else {echo "Sign in";}?></a>
+              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="signup.php"><?php if (isset($_SESSION["userName"])) {echo $_SESSION["userName"];} else {echo "Sign up";}?></a>
             </li>
             <li class="nav-item mx-0 mx-lg-1">
               <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="signout.php"><?php  echo "Sign out"; ?></a>
@@ -69,9 +69,8 @@ session_start() ;
         <hr class="star-dark mb-5">
         <div class="row">
           <div class="col-lg-8 mx-auto">
-            <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
-            <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
-            <form name="sentMessage" id="contactForm" novalidate="novalidate" method="post" action="checkUserdata.php">
+             <form name="sentMessage" id="contactForm" novalidate="novalidate" method="post" 
+                   action="checkUserdata.php">
               <div class="control-group">
                 <div class="form-group floating-label-form-group controls mb-0 pb-2">
                   <label>Name</label>
