@@ -1,7 +1,7 @@
 <?php
 require "connect.php" ;
 
-$sqlDeleteAll = "Delete * from `meal`" ;
+$sqlDeleteAll = "Delete from `meal`" ;
 $res = mysqli_query($con, $sqlDeleteAll);
 $link = "https://www.themealdb.com/api/json/v1/1/latest.php" ;
 
