@@ -1,5 +1,8 @@
 <?php
 require "connect.php" ;
+
+$sqlDeleteAll = "Delete * from `meal`" ;
+$res = mysqli_query($con, $sqlInsertMeal);
 $link = "https://www.themealdb.com/api/json/v1/1/latest.php" ;
 
 $curl = curl_init();
